@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+  - name: ansible create directory example
+    command: df -h / | awk '{print $4}' | tail -1
+    register: df_result
+    ignore_errors: yes
+
+  - name: Ensure OpenShift CLI is installed
+    assert:
+      that:
+        - df_result.rc > 5
+      msg: "Slobodan prostor na / je veci od 5GB"
