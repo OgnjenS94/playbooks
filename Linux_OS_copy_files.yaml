@@ -12,6 +12,7 @@
    tasks:
      - name: Copy the file from ansible tower to ema
        copy: src=buffer/{{ item }} dest=/opt/ 
+       with_items:  ['advanced_agents_xlinux_8.1.4.0.13.tar', 'APMADV_silent_install.txt']
      - name: Extract tar file
        ansible.builtin.unarchive:
          src: /opt/advanced_agents_xlinux_8.1.4.0.13.tar
