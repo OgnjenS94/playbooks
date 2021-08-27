@@ -3,7 +3,8 @@
    tasks:
      - name: Fetch the file from the ogi to ansible tower
        run_once: yes
-       fetch: src=/home/netcool/advanced_agents_xlinux_8.1.4.0.13.tar dest=buffer/ flat=yes
+       fetch: src=/home/netcool/ dest=buffer/ flat=yes
+       with_items: "{{ advanced_agents_xlinux_8.1.4.0.13.tar, APMADV_silent_install.txt"
 
  - hosts: 192.168.150.29
    vars:
