@@ -13,3 +13,4 @@
        ansible.builtin.unarchive:
          src: /opt/samples.tar.gz
          dest: /opt
+         remote_src: yes
