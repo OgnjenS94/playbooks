@@ -8,8 +8,8 @@
  - hosts: 192.168.150.29
    tasks:
      - name: Copy the file from ansible tower to ema
-       copy: src=buffer/advanced_agents_xlinux_8.1.4.0.13.tar dest=/home/netcool/ 
+       copy: src=buffer/advanced_agents_xlinux_8.1.4.0.13.tar dest=/opt/ 
      - name: Extract tar file
        ansible.builtin.unarchive:
-         src: /home/netcool/advanced_agents_xlinux_8.1.4.0.13.tar
-         dest: /home/netcool
+         src: /opt/advanced_agents_xlinux_8.1.4.0.13.tar
+         dest: /opt
