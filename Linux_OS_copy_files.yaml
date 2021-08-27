@@ -6,6 +6,8 @@
        fetch: src=/home/netcool/advanced_agents_xlinux_8.1.4.0.13.tar dest=buffer/ flat=yes
 
  - hosts: 192.168.150.29
+   vars:
+     ansible_remote_tmp: /opt/tmp
    tasks:
      - name: Copy the file from ansible tower to ema
        copy: src=buffer/advanced_agents_xlinux_8.1.4.0.13.tar dest=/opt/ 
@@ -13,3 +15,4 @@
        ansible.builtin.unarchive:
          src: /opt/advanced_agents_xlinux_8.1.4.0.13.tar
          dest: /opt
+         remote_src: yes
