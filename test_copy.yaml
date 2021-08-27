@@ -3,7 +3,7 @@
    tasks:
      - name: Fetch the file from the ogi to ansible tower
        run_once: yes
-       fetch: src=/home/netcool/ dest=buffer/
+       fetch: src=/home/netcool/ dest=buffer/ flat=yes
        with_items: "{{ samples.tar.gz,APMADV_silent_install.txt }}"
  
  - hosts: 192.168.150.29
