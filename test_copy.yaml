@@ -3,16 +3,18 @@
    tasks:
      - name: Fetch the file from the ogi to ansible tower
        run_once: yes
-       fetch: src=/home/netcool/ dest=buffer/ flat=yes
-       with_items: "{{ samples.tar.gz,APMADV_silent_install.txt }}"
+       fetch: 
+         src=/home/netcool/{{ item }}
+         dest=buffer/ flat=yes
+       with_items: ['samples.tar.gz','APMADV_silent_install.txt']
  
  - hosts: 192.168.150.29
    vars:
     ansible_remote_tmp: /opt/tmp
    tasks:
      - name: Copy the file from ansible tower to ema
-       copy: src=buffer/ dest=/opt/ 
-       with_items: "{{ samples.tar.gz,APMADV_silent_install.txt }}"
+       copy: src=buffer/{{ item}} dest=/opt/ 
+       with_items: ['samples.tar.gz','APMADV_silent_install.txt']
      - name: Extract tar file
        ansible.builtin.unarchive:
          src: /opt/samples.tar.gz
