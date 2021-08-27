@@ -1,5 +1,5 @@
 ---
- - hosts: Linux OS
+ - hosts: app
    tasks:
      - name: Fetch the file from the Ogi to ansible tower
        run_once: yes
