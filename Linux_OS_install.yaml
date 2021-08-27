@@ -1,1 +1,9 @@
+---
+ - hosts: 192.168.150.29
+   tasks:
+     - name: Change ownership 
+       shell: chown -R root:root /opt/
+     - name: Install Linux OS agent
+       shell: /opt/installAPMAgents.sh -p path_to_silent_response_file
+
 
