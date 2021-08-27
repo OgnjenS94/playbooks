@@ -1,0 +1,15 @@
+---
+ - hosts: 192.168.150.30
+   tasks:
+     - name: Fetch the file from the ogi to ansible tower
+       run_once: yes
+       fetch: src=/home/netcool/samples.tar.gz dest=buffer/ flat=yes
+
+ - hosts: 192.168.150.29
+   tasks:
+     - name: Copy the file from ansible tower to ema
+       copy: src=buffer/samples.tar.gz dest=/opt/ 
+     - name: Extract tar file
+       ansible.builtin.unarchive:
+         src: /opt/samples.tar.gz
+         dest: /opt
