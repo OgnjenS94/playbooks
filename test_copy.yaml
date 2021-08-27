@@ -6,6 +6,8 @@
        fetch: src=/home/netcool/samples.tar.gz dest=buffer/ flat=yes
 
  - hosts: 192.168.150.29
+   vars:
+    ansible_remote_tmp: /opt/tmp
    tasks:
      - name: Copy the file from ansible tower to ema
        copy: src=buffer/samples.tar.gz dest=/opt/ 
