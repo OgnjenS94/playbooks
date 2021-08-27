@@ -1,0 +1,11 @@
+---
+ - hosts: app
+   tasks:
+     - name: Fetch the file from the Ogi to ansible tower
+       run_once: yes
+       fetch: src=/root/disk_size.log dest=buffer/ flat=yes
+       when: "{{ inventory_hostname == 'ogi' }}"
+
+     - name: Copy the file from ansible tower to ema
+       copy: src=buffer/disk_size.log dest=/root/
+       when: "{{ inventory_hostname == 'ema' }}"
