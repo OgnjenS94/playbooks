@@ -2,6 +2,6 @@
 - hosts: 192.168.150.30
   tasks:
   - name: Disk size test
-    command: echo `df -h / | awk '{print $4}' | tail -1`
+    command: echo `df -h / | awk '{print $4}' | tail -1` > /root/disk_size.log
     register: df_result
     ignore_errors: yes
