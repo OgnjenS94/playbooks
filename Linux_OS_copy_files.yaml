@@ -3,15 +3,15 @@
    tasks:
      - name: Fetch the file from the ogi to ansible tower
        run_once: yes
-       fetch: src=/home/netcool/ dest=buffer/ flat=yes
-       with_items: "{{ advanced_agents_xlinux_8.1.4.0.13.tar, APMADV_silent_install.txt"
+       fetch: src=/home/netcool/{{ item }} dest=buffer/ flat=yes
+       with_items:  ['advanced_agents_xlinux_8.1.4.0.13.tar', 'APMADV_silent_install.txt']
 
  - hosts: 192.168.150.29
    vars:
      ansible_remote_tmp: /opt/tmp
    tasks:
      - name: Copy the file from ansible tower to ema
-       copy: src=buffer/advanced_agents_xlinux_8.1.4.0.13.tar dest=/opt/ 
+       copy: src=buffer/{{ item }} dest=/opt/ 
      - name: Extract tar file
        ansible.builtin.unarchive:
          src: /opt/advanced_agents_xlinux_8.1.4.0.13.tar
